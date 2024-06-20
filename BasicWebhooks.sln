@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.Api", "BasicWebHooks.Api\BasicWebHooks.Api.csproj", "{E7904308-02CB-41D0-9615-C55A28969B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.Configuration", "BasicWebHooks.Configuration\BasicWebHooks.Configuration.csproj", "{100070C5-8331-4292-8B54-D54BCBAB3621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.Configuration.Tests", "BasicWebHooks.Configuration.Tests\BasicWebHooks.Configuration.Tests.csproj", "{7C7C1A56-E8AC-42EF-9500-3758BAC8D5B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.Core", "BasicWebHooks.Core\BasicWebHooks.Core.csproj", "{445636E9-DD38-40B6-A69B-F3912D83B4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.Core.Tests", "BasicWebHooks.Core.Tests\BasicWebHooks.Core.Tests.csproj", "{20017AC2-D388-4CB0-A31E-0BB59AD01DC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.EF", "BasicWebHooks.EF\BasicWebHooks.EF.csproj", "{3CB3B62C-F09D-4A77-A1CC-53E28EBD876C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.EF.Tests", "BasicWebHooks.EF.Tests\BasicWebHooks.EF.Tests.csproj", "{A45278A7-6DAD-4229-9E6F-9882DD1639CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.InMemory", "BasicWebHooks.InMemory\BasicWebHooks.InMemory.csproj", "{683CF362-495A-4057-B1F3-C56F601F7CC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.InMemory.Tests", "BasicWebHooks.InMemory.Tests\BasicWebHooks.InMemory.Tests.csproj", "{9CF5F80E-FD33-418E-A6BE-7894CAF33C56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.MassTransit", "BasicWebHooks.MassTransit\BasicWebHooks.MassTransit.csproj", "{04DDAFAB-5B91-40B9-ADE7-15CF8E970A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWebHooks.MassTransit.Tests", "BasicWebHooks.MassTransit.Tests\BasicWebHooks.MassTransit.Tests.csproj", "{8E6D3752-96DB-4495-94B4-32C5AF8361EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7904308-02CB-41D0-9615-C55A28969B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7904308-02CB-41D0-9615-C55A28969B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7904308-02CB-41D0-9615-C55A28969B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7904308-02CB-41D0-9615-C55A28969B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{100070C5-8331-4292-8B54-D54BCBAB3621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{100070C5-8331-4292-8B54-D54BCBAB3621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{100070C5-8331-4292-8B54-D54BCBAB3621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{100070C5-8331-4292-8B54-D54BCBAB3621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C7C1A56-E8AC-42EF-9500-3758BAC8D5B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C7C1A56-E8AC-42EF-9500-3758BAC8D5B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C7C1A56-E8AC-42EF-9500-3758BAC8D5B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C7C1A56-E8AC-42EF-9500-3758BAC8D5B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{445636E9-DD38-40B6-A69B-F3912D83B4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{445636E9-DD38-40B6-A69B-F3912D83B4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{445636E9-DD38-40B6-A69B-F3912D83B4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{445636E9-DD38-40B6-A69B-F3912D83B4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20017AC2-D388-4CB0-A31E-0BB59AD01DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20017AC2-D388-4CB0-A31E-0BB59AD01DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20017AC2-D388-4CB0-A31E-0BB59AD01DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20017AC2-D388-4CB0-A31E-0BB59AD01DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CB3B62C-F09D-4A77-A1CC-53E28EBD876C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB3B62C-F09D-4A77-A1CC-53E28EBD876C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB3B62C-F09D-4A77-A1CC-53E28EBD876C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB3B62C-F09D-4A77-A1CC-53E28EBD876C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45278A7-6DAD-4229-9E6F-9882DD1639CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45278A7-6DAD-4229-9E6F-9882DD1639CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45278A7-6DAD-4229-9E6F-9882DD1639CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45278A7-6DAD-4229-9E6F-9882DD1639CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683CF362-495A-4057-B1F3-C56F601F7CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683CF362-495A-4057-B1F3-C56F601F7CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683CF362-495A-4057-B1F3-C56F601F7CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683CF362-495A-4057-B1F3-C56F601F7CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CF5F80E-FD33-418E-A6BE-7894CAF33C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CF5F80E-FD33-418E-A6BE-7894CAF33C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CF5F80E-FD33-418E-A6BE-7894CAF33C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CF5F80E-FD33-418E-A6BE-7894CAF33C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DDAFAB-5B91-40B9-ADE7-15CF8E970A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DDAFAB-5B91-40B9-ADE7-15CF8E970A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DDAFAB-5B91-40B9-ADE7-15CF8E970A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DDAFAB-5B91-40B9-ADE7-15CF8E970A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6D3752-96DB-4495-94B4-32C5AF8361EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6D3752-96DB-4495-94B4-32C5AF8361EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6D3752-96DB-4495-94B4-32C5AF8361EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6D3752-96DB-4495-94B4-32C5AF8361EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
