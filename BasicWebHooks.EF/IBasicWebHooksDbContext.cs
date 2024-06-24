@@ -1,12 +1,12 @@
-﻿using System.Data.Entity;
-using BasicWebHooks.Core;
+﻿using BasicWebHooks.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace BasicWebHooks.EF;
 
 public interface IBasicWebHooksDbContext
 {
-    DbSet<WebHookType> WebHookTypes { get; set; }
-    DbSet<WebHookTarget> WebHookTargets { get; set; }
-    DbSet<WebHookInvocation> WebHookInvocations { get; set; }
-    DbSet<WebHookTargetInvocation> WebHookTargetInvocations { get; set; }
+    DbSet<WebHookType> WebHookTypes { get; }
+    DbSet<WebHookTarget> WebHookTargets { get; }
+    DbSet<WebHookInvocation> WebHookInvocations { get; }
+    DbSet<WebHookTargetInvocation> WebHookTargetInvocations { get; }
 }

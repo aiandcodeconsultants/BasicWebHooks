@@ -12,7 +12,7 @@ public class ExceptionInvokerTests
         var invoker = new ExceptionInvoker();
 
         // Act
-        var result = await invoker.TryInvoke(new(), out Exception? exception);
+        var result = await invoker.TryInvoke(new(), out var exception);
 
         // Assert
         _ = result.Should().BeFalse();
