@@ -29,9 +29,9 @@ public class EFWebhookTypeManager<TDbContext>(TDbContext db)
 
     /// <inheritdoc/>
     public async ValueTask<WebHookType?> /*IWebHookTypeReader.*/GetTypeById(long id, CancellationToken cancellationToken = default)
-        => await db.WebHookTypes.FindAsync([cancellationToken, id], cancellationToken: cancellationToken);
+        => await db.WebHookTypes.FindAsync([id], cancellationToken: cancellationToken);
 
     /// <inheritdoc/>
-    public ValueTask<List<WebHookType>> /*IWebHookTypeReader.*/ListTypes(CancellationToken cancellationToken = default)
-        => throw new NotImplementedException();
+    public async ValueTask<List<WebHookType>> /*IWebHookTypeReader.*/ListTypes(CancellationToken cancellationToken = default)
+        => await db.WebHookTypes.ToListAsync(cancellationToken);
 }

@@ -1,4 +1,7 @@
 ﻿namespace BasicWebHooks.Core;
+
+using System.ComponentModel.DataAnnotations;
+
 public abstract class BaseWebHookEntity
 {
     protected BaseWebHookEntity()
@@ -7,11 +10,12 @@ public abstract class BaseWebHookEntity
         Updated = DateTime.UtcNow;
     }
 
-    public int Id { get; set; }
+    [Key]
+    public long Id { get; set; }
 
-    public DateTime Created { get; set; } = DateTime.UtcNow;
+    public DateTime Created { get; set; }
 
-    public DateTime Updated { get; set; } = DateTime.UtcNow;
+    public DateTime Updated { get; set; }
 
     public DateTime? Deleted { get; set; }
 }
