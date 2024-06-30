@@ -25,7 +25,7 @@ public class EFWebHookTargetManager<TDbContext>(TDbContext db)
     }
 
     public ValueTask<WebHookTarget?> GetTargetById(long id, CancellationToken cancellationToken = default)
-        => db.WebHookTargets.FindAsync([cancellationToken, id], cancellationToken: cancellationToken);
+        => db.WebHookTargets.FindAsync([id], cancellationToken: cancellationToken);
 
     public async ValueTask<List<WebHookTarget>> ListTargets(CancellationToken cancellationToken = default)
         => await db.WebHookTargets.ToListAsync(cancellationToken);

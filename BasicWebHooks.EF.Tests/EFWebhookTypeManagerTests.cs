@@ -11,8 +11,8 @@ public class EFWebhookTypeManagerTests : IAsyncLifetime
 {
     private const string InMemoryConnectionString = "DataSource=:memory:";
     private IServiceProvider? services;
-    private BasicWebHooksDbContext db => services!.GetRequiredService<BasicWebHooksDbContext>();
-    private EFWebhookTypeManager<BasicWebHooksDbContext> manager => services!.GetRequiredService<EFWebhookTypeManager<BasicWebHooksDbContext>>();
+    private BasicWebHooksDbContext Db => services!.GetRequiredService<BasicWebHooksDbContext>();
+    private EFWebhookTypeManager<BasicWebHooksDbContext> Manager => services!.GetRequiredService<EFWebhookTypeManager<BasicWebHooksDbContext>>();
     protected virtual string ConnectionString => InMemoryConnectionString;
 
     protected virtual IServiceCollection ConfigureServices(ServiceCollection services)
@@ -41,14 +41,14 @@ public class EFWebhookTypeManagerTests : IAsyncLifetime
         var webhookType = new WebHookType { Name = "Test" };
 
         // Act
-        var result = await manager.Upsert(webhookType);
-        var webhook = await db.WebHookTypes.FirstOrDefaultAsync();
+        var result = await Manager.Upsert(webhookType);
+        var webhook = await Db.WebHookTypes.FirstOrDefaultAsync();
 
         // Assert
-        result.Should().NotBe(0);
-        webhookType.Id.Should().NotBe(0);
-        webhook.Should().NotBeNull();
-        webhook!.Name.Should().Be(webhookType.Name);
+        _ = result.Should().NotBe(0);
+        _ = webhookType.Id.Should().NotBe(0);
+        _ = webhook.Should().NotBeNull();
+        _ = webhook!.Name.Should().Be(webhookType.Name);
     }
 
     [Fact]
@@ -57,20 +57,20 @@ public class EFWebhookTypeManagerTests : IAsyncLifetime
         // Arrange
         var webhookType = new WebHookType { Name = "Test" };
         var newName = "Updated";
-        _ = await db.WebHookTypes!.AddAsync(webhookType);
-        _ = await db.SaveChangesAsync();
+        _ = await Db.WebHookTypes!.AddAsync(webhookType);
+        _ = await Db.SaveChangesAsync();
         webhookType.Name = newName;
 
         // Act
-        var result = await manager.Upsert(webhookType);
-        var webhook = await db.WebHookTypes.FirstOrDefaultAsync();
-        var count = await db.WebHookTypes.CountAsync();
+        var result = await Manager.Upsert(webhookType);
+        var webhook = await Db.WebHookTypes.FirstOrDefaultAsync();
+        var count = await Db.WebHookTypes.CountAsync();
 
         // Assert
-        result.Should().Be(webhookType.Id);
-        webhook.Should().NotBeNull();
-        count.Should().Be(1);
-        webhook!.Name.Should().Be(newName);
+        _ = result.Should().Be(webhookType.Id);
+        _ = webhook.Should().NotBeNull();
+        _ = count.Should().Be(1);
+        _ = webhook!.Name.Should().Be(newName);
     }
 
     [Fact]
@@ -78,15 +78,15 @@ public class EFWebhookTypeManagerTests : IAsyncLifetime
     {
         // Arrange
         var webhookType = new WebHookType { Name = "Test" };
-        _ = await db.WebHookTypes!.AddAsync(webhookType);
-        _ = await db.SaveChangesAsync();
+        _ = await Db.WebHookTypes!.AddAsync(webhookType);
+        _ = await Db.SaveChangesAsync();
 
         // Act
-        var result = await manager.GetTypeById(webhookType.Id);
+        var result = await Manager.GetTypeById(webhookType.Id);
 
         // Assert
-        result.Should().NotBeNull();
-        result!.Name.Should().Be(webhookType.Name);
+        _ = result.Should().NotBeNull();
+        _ = result!.Name.Should().Be(webhookType.Name);
     }
 
     [Fact]
@@ -94,27 +94,26 @@ public class EFWebhookTypeManagerTests : IAsyncLifetime
     {
         // Arrange
         var webhookType = new WebHookType { Name = "Test" };
-        _ = await db.WebHookTypes!.AddAsync(webhookType);
-        _ = await db.SaveChangesAsync();
+        _ = await Db.WebHookTypes!.AddAsync(webhookType);
+        _ = await Db.SaveChangesAsync();
 
         // Act
-        var result = await manager.GetTypeById(webhookType.Id + 1);
+        var result = await Manager.GetTypeById(webhookType.Id + 1);
 
         // Assert
-        result.Should().BeNull();
+        _ = result.Should().BeNull();
     }
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously:- clearer without applying
     public async Task InitializeAsync()
     {
         services = ConfigureServices(new ServiceCollection())
                             .BuildServiceProvider();
-        _ = await db.Database.EnsureCreatedAsync();
+        _ = await Db.Database.EnsureCreatedAsync();
     }
 
     public async Task DisposeAsync()
     {
-        _ = await db.Database.EnsureDeletedAsync();
+        _ = await Db.Database.EnsureDeletedAsync();
 
         await services!.GetRequiredService<SqliteConnection>().DisposeAsync();
     }
