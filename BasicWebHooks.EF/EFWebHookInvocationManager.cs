@@ -24,7 +24,7 @@ public class EFWebHookInvocationManager<TWebHookDbContext>(TWebHookDbContext db)
     public async ValueTask Remove(WebHookInvocation webhookInvocation, CancellationToken cancellationToken = default)
     {
         var invocation = await db.WebHookInvocations.FindAsync([webhookInvocation.Id], cancellationToken);
-        if (invocation?.Deleted != null)
+        if (invocation != null && invocation!.Deleted == null)
         {
             invocation.Deleted = TimeProvider.GetUtcNow().UtcDateTime;
             _ = await db.SaveChangesAsync(cancellationToken);
