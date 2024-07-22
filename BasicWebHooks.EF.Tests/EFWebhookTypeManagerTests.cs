@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BasicWebHooks.EF.Tests;
-public class EFWebhookTypeManagerTests : IAsyncLifetime
+public class EFWebHookTypeManagerTests : IAsyncLifetime
 {
     private const string InMemoryConnectionString = "DataSource=:memory:";
     private IServiceProvider? services;

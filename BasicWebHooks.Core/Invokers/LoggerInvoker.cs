@@ -7,18 +7,16 @@ public class LoggerInvoker(ILogger<LoggerInvoker> logger, TimeProvider? timeProv
 {
     private const string Message = "LoggerInvoker @ {Now}\r\nInvocation: {InvocationJson}";
 
-    public ValueTask<bool> TryInvoke(WebHookTargetInvocation targetInvocation, out Exception? exception, CancellationToken cancellationToken = default)
+    public ValueTask<Exception?> TryInvoke(WebHookTargetInvocation targetInvocation, CancellationToken cancellationToken = default)
     {
         try
         {
             var now = (timeProvider ?? TimeProvider.System).GetUtcNow().UtcDateTime;
             logger.LogInformation(Message, now, JsonSerializer.Serialize(targetInvocation));
-            exception = null;
-            return ValueTask.FromResult(true);
+            return ValueTask.FromResult<Exception?>(null);
         } catch (Exception ex)
         {
-            exception = ex;
-            return ValueTask.FromResult(false);
+            return ValueTask.FromResult<Exception?>(ex);
         }
     }
 }

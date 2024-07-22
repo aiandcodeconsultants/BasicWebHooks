@@ -8,9 +8,6 @@ public class ExceptionInvoker() : IInvoker
         : this()
         => this.exceptionToReturn = exceptionToReturn;
 
-    public ValueTask<bool> TryInvoke(WebHookTargetInvocation targetInvocation, out Exception? exception, CancellationToken cancellationToken = default)
-    {
-        exception = exceptionToReturn ?? new Exception(nameof(ExceptionInvoker));
-        return ValueTask.FromResult(false);
-    }
+    public ValueTask<Exception?> TryInvoke(WebHookTargetInvocation targetInvocation, CancellationToken cancellationToken = default)
+        => ValueTask.FromResult<Exception?>(exceptionToReturn ?? new Exception(nameof(ExceptionInvoker)));
 }

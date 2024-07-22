@@ -9,16 +9,15 @@ public class ConsoleInvoker() : IInvoker
     public ConsoleInvoker(TimeProvider timeProvider) : this()
         => TimeProvider = timeProvider;
 
-    public ValueTask<bool> TryInvoke(WebHookTargetInvocation targetInvocation, out Exception? exception, CancellationToken cancellationToken = default)
+    public ValueTask<Exception?> TryInvoke(WebHookTargetInvocation targetInvocation, CancellationToken cancellationToken = default)
     {
         var now = TimeProvider.GetUtcNow().UtcDateTime;
 
-        Console.WriteLine($"{now:O} - Invoking {targetInvocation.Id} with {targetInvocation.Invocation!.Type.Name} ({targetInvocation.Target!.ParametersJson ?? "<null>"})");
-        exception = null;
+        Console.WriteLine($"{now:O} - Invoking {targetInvocation.Id} with {targetInvocation.Invocation!.Type!.Name} ({targetInvocation.Target!.ParametersJson ?? "<null>"})");
 
         targetInvocation!.Log = (targetInvocation.Log == null ? "" : targetInvocation + "\r\n") + $"Logged to console @ {DateTime.UtcNow:O}";
         targetInvocation.SetUpdated(now).Completed = now;
 
-        return ValueTask.FromResult(true);
+        return ValueTask.FromResult<Exception?>(null);
     }
 }
