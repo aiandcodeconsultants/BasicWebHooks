@@ -30,6 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BasicWebHooks.Core\BasicWebHooks.Core.csproj" />
+    <ProjectReference Include="..\BasicWebHooks.InMemory\BasicWebHooks.InMemory.csproj" />
     <ProjectReference Include="..\BasicWebHooks.MassTransit\BasicWebHooks.MassTransit.csproj" />
   </ItemGroup>
 
