@@ -8,11 +8,10 @@ public class EFWebHookTargetInvocationManager<TDbContext>(TDbContext db)
     : IWebHookTargetInvocationReader, IWebHookTargetInvocationWriter
     where TDbContext : DbContext, IBasicWebHooksDbContext
 {
-    private readonly TimeProvider? timeProvider;
-    private TimeProvider TimeProvider => timeProvider ?? TimeProvider.System;
+    private TimeProvider TimeProvider { get; } = TimeProvider.System;
     public EFWebHookTargetInvocationManager(TDbContext db, TimeProvider timeProvider)
         : this(db)
-        => this.timeProvider = timeProvider;
+        => TimeProvider = timeProvider;
 
     public async ValueTask<WebHookTargetInvocation?> GetTargetInvocationById(long id, CancellationToken cancellationToken = default)
         => await db.WebHookTargetInvocations.FindAsync([id], cancellationToken);
