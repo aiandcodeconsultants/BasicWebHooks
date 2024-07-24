@@ -40,7 +40,11 @@ public class EFWebHookTargetInvocationManagerTests : IAsyncLifetime
         result.Should().BeEquivalentTo(expectedInvocation);
     }
 
-    public Task InitializeAsync() => throw new NotImplementedException();
+    public Task InitializeAsync()
+    {
+        // NB: We are only currently using the DisposeAsync method, so deliberately a non-op
+        return Task.CompletedTask;
+    }
 
     [Fact]
     public async Task ListTargetInvocationByInvocationId_ReturnsAllRelatedInvocations()
@@ -68,10 +72,13 @@ public class EFWebHookTargetInvocationManagerTests : IAsyncLifetime
         timeProvider.GetUtcNow().Returns(DateTime.UtcNow);
 
         await manager.Remove(webhookTargetInvocation);
+        db.ChangeTracker.Clear();
 
-        var result = await db.WebHookTargetInvocations.FindAsync(1);
-        result.Should().NotBeNull();
-        result!.Deleted.Should().BeCloseTo(timeProvider.GetUtcNow().UtcDateTime, TimeSpan.FromSeconds(1));
+        var result = await db.WebHookTargetInvocations.FindAsync(1L);
+        var resultIncludingDeleted = await db.WebHookTargetInvocations.IgnoreQueryFilters().FirstAsync(x => x.Id == 1L);
+        result.Should().BeNull();
+        resultIncludingDeleted.Should().NotBeNull();
+        resultIncludingDeleted!.Deleted.Should().BeCloseTo(timeProvider.GetUtcNow().UtcDateTime, TimeSpan.FromSeconds(1));
     }
 
     [Fact]
@@ -81,7 +88,7 @@ public class EFWebHookTargetInvocationManagerTests : IAsyncLifetime
 
         var resultId = await manager.Upsert(newInvocation);
 
-        var result = await db.WebHookTargetInvocations.FindAsync(2);
+        var result = await db.WebHookTargetInvocations.FindAsync(2L);
         result.Should().NotBeNull();
         resultId.Should().Be(2);
     }
@@ -96,7 +103,7 @@ public class EFWebHookTargetInvocationManagerTests : IAsyncLifetime
         var updatedInvocation = new WebHookTargetInvocation { Id = 1, WebHookInvocationId = 2 };
         await manager.Upsert(updatedInvocation);
 
-        var result = await db.WebHookTargetInvocations.FindAsync(1);
+        var result = await db.WebHookTargetInvocations.FindAsync(1L);
         result.Should().NotBeNull();
         result!.WebHookInvocationId.Should().Be(2);
     }

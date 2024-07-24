@@ -24,9 +24,9 @@ public class EFWebHookTargetInvocationManager<TDbContext>(TDbContext db)
     public async ValueTask Remove(WebHookTargetInvocation webhookTargetInvocation, CancellationToken cancellationToken = default)
     {
         var invocation = await db.WebHookTargetInvocations.FindAsync([webhookTargetInvocation.Id], cancellationToken);
-        if (invocation?.Deleted != null)
+        if (invocation != null && invocation.Deleted == null)
         {
-            invocation.Deleted = TimeProvider.GetUtcNow().UtcDateTime;
+            invocation!.Deleted = TimeProvider.GetUtcNow().UtcDateTime;
             _ = await db.SaveChangesAsync(cancellationToken);
         }
     }
